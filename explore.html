@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prada - Explore</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden; /* no scroll */
+        background-color: gray; /* Set background to gray */
+      background-size: cover;
+      color: #fff;
+    }
+
+    body {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    nav {
+      width: 220px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      font-weight: 600;
+      letter-spacing: 1px;
+      z-index: 10;
+    }
+
+    nav h1 {
+      font-family: 'Didot', serif;
+      font-size: 2.5rem;
+      margin-bottom: 60px;
+      cursor: default;
+      user-select: none;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 15px 30px;
+      width: 100%;
+      text-align: center;
+      transition: background 0.3s ease;
+      font-size: 1.1rem;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background: #555;
+      color: #fff;
+    }
+
+    main {
+      margin-left: 220px;
+      padding: 30px 25px;
+      flex: 1;
+      max-width: 1500px;
+      height: 100vh; /* fill viewport */
+      overflow: hidden; /* no scroll */
+      background: rgba(0,0,0,0.45);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      
+    }
+
+    main h2 {
+      font-family: 'Didot', serif;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      letter-spacing: 3px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .hero {
+      font-family: 'Didot', serif;
+      font-size: 1.15rem;
+      margin-bottom: 20px;
+      text-align: center;
+      line-height: 1.5;
+      color: #ddd;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+      flex-shrink: 0;
+    }
+
+    .explore-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 20px;
+      flex-grow: 1;
+      /* restrict height so no scroll */
+      height: calc(100% - 140px); /* subtract space for h2 and hero */
+    }
+
+    .explore-item {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      color: #fff;
+      transition: transform 0.3s ease;
+      user-select: none;
+    }
+
+    .explore-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255,255,255,0.8);
+    }
+
+    .explore-image {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 12px 12px 0 0;
+      pointer-events: none;
+    }
+
+    .explore-details {
+      padding: 15px 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .explore-name {
+      font-family: 'Didot', serif;
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .explore-description {
+      font-size: 0.85rem;
+      color: #ccc;
+    }
+
+    /* Footer */
+    footer {
+      margin-left: 220px;
+      padding: 8px 20px;
+      text-align: center;
+      font-size: 0.7rem;
+      color: #ccc;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      left: 220px;
+      background: rgba(0, 0, 0, 0.4);
+      flex-shrink: 0;
+    }
+
+    .footer-icons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 3px;
+    }
+
+    .footer-icons a {
+      color: white;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-icons a:hover {
+      color: #aaa;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        position: relative;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        padding: 20px 0;
+        background: rgba(0, 0, 0, 0.7);
+      }
+
+      nav h1 {
+        margin-bottom: 0;
+        margin-right: 40px;
+        font-size: 1.8rem;
+      }
+
+      nav a {
+        padding: 10px 15px;
+        font-size: 1rem;
+      }
+
+      main {
+        margin-left: 0;
+        padding: 30px 20px;
+        border-radius: 0;
+        max-width: 100%;
+        height: 100vh;
+        overflow: hidden; 
+      }
+
+      .hero {
+        font-size: 1rem;
+        margin-bottom: 15px;
+      }
+
+      .explore-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+        height: calc(100% - 110px);
+        gap: 15px;
+      }
+
+      footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        color: white;
+        text-align: center;
+        font-size: 0.6rem;
+        padding: 6px 10px;
+        left: 0;
+        margin-left: 0;
+      }
+
+      .footer-icons {
+        gap: 10px;
+      }
+
+      .footer-icons a {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <h1>PRADA</h1>
+    <a href="homepage.html">Home</a>
+    <a href="campaigns.html">Campaigns</a>
+    <a href="shop.html">Shop</a>
+    <a href="explore.html" class="active">Explore</a>
+    <a href="cart.html">Cart</a>
+    <a href="about us.html">About us</a>
+  </nav>
+
+  <main>
+    <h2>Explore Prada</h2>
+    <div class="hero">
+      Discover the essence of Prada through our curated collections, latest trends, and exclusive stories. Dive deeper into luxury and style.
+    </div>
+
+    <div class="explore-grid">
+      <div class="explore-item" tabindex="0">
+        <img src="18cd576132729cc75dbe3a1c73e7170c.jpg" alt="New Collection" class="explore-image" />
+        <div class="explore-details">
+          <div class="explore-name">New Collection</div>
+          <div class="explore-description">Explore the latest arrivals and innovative designs for the season.</div>
+        </div>
+      </div>
+
+      <div class="explore-item" tabindex="0">
+        <img src="93c6945169e3d225ad050357b341a9e7.jpg" alt="Sustainability" class="explore-image" />
+        <div class="explore-details">
+          <div class="explore-name">Sustainability</div>
+          <div class="explore-description">Learn about Prada’s commitment to ethical fashion and eco-conscious materials.</div>
+        </div>
+      </div>
+
+      <div class="explore-item" tabindex="0">
+        <img src="39eb415dae9f20f67111c0b9022d3fa5.jpg" alt="Craftsmanship" class="explore-image" />
+        <div class="explore-details">
+          <div class="explore-name">Craftsmanship</div>
+          <div class="explore-description">Discover the artistry and skill behind every Prada product.</div>
+        </div>
+      </div>
+
+      <div class="explore-item" tabindex="0">
+        <img src="9244bf5d2dcb63e8dba04679c959e682.jpg" alt="Events" class="explore-image" />
+        <div class="explore-details">
+          <div class="explore-name">Events</div>
+          <div class="explore-description">Stay updated with Prada’s latest shows, launches, and special events.</div>
+        </div>
+      </div>
+
+      <div class="explore-item" tabindex="0">
+        <img src="a6167f87de91e2059770c2f23f05e548.jpg" alt="Archive" class="explore-image" />
+        <div class="explore-details">
+          <div class="explore-name">Archive</div>
+          <div class="explore-description">Dive into Prada’s history and timeless iconic pieces.</div>
+        </div>
+      </div>
+
+      <div class="explore-item" tabindex="0">
+        <img src="Prada-Spring-2020-ad-campaign-Pictures-the-impression-015-scaled.JPEG" alt="Culture" class="explore-image" />
+        <div class="explore-details">
+          <div class="explore-name">Culture</div>
+          <div class="explore-description">Experience Prada’s influence on fashion, art, and pop culture.</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-icons">
+      <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p>© 2025.Prada.com.</p>
+  </footer>
+
+</body>
+</html>

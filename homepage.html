@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prada - Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: url('PRADAaaaa1111.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Sidebar Navigation */
+    nav {
+      width: 220px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      font-weight: 600;
+      letter-spacing: 1px;
+      z-index: 10;
+    }
+
+    nav h1 {
+      font-family: 'Didot', serif;
+      font-size: 2.5rem;
+      margin-bottom: 60px;
+      cursor: default;
+      user-select: none;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 15px 30px;
+      width: 100%;
+      text-align: center;
+      transition: background 0.3s ease;
+      font-size: 1.1rem;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background: #555;
+      color: #fff;
+    }
+
+    /* Main content */
+    main {
+      margin-left: 220px;
+      padding: 60px 40px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 10px;
+      max-width: 900px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    main h2 {
+      font-family: 'Didot', serif;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      letter-spacing: 3px;
+    }
+
+    main p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #eee;
+    }
+
+    /* Footer */
+    footer.footer {
+      margin-left: 220px;
+      padding: 12px 40px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #ccc;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      left: 220px;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .footer-icons {
+      display: flex;
+      justify-content: center;
+      gap: 12px; 
+      margin-bottom: 3px;
+    }
+
+    .footer-icons a {
+      color: white;
+      font-size: 18px; 
+      transition: color 0.3s ease;
+    }
+
+    .footer-icons a:hover {
+      color: #aaa;
+    }
+
+@media (max-width: 768px) {
+  nav {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 15px 10px;
+  }
+
+  nav h1 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  nav a {
+    padding: 10px;
+    font-size: 0.9rem;
+    flex: 1;
+  }
+
+  main {
+    margin-left: 0;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: 100px auto 60px;
+    padding: 20px;
+    max-width: 95%;
+  }
+
+  main h2 {
+    font-size: 2rem;
+  }
+
+  main p {
+    font-size: 1rem;
+  }
+
+  footer.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-left: 0;
+    left: 0;
+    padding: 6px;
+    font-size: 0.75rem;
+    background: rgba(0,0,0,0.9);
+  }
+
+  .footer-icons a {
+    font-size: 16px;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <h1>PRADA</h1>
+    <a href="homepage.html" class="active">Home</a>
+    <a href="campaign.html">Campaigns</a>
+    <a href="shop.html">Shop</a>
+    <a href="explore.html">Explore</a>
+    <a href="cart.html">Cart</a>
+    <a href="about us.html">About Us</a>
+  </nav>
+
+
+  <footer class="footer">
+    <div class="footer-icons">
+      <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p>© 2025 Prada.com</p>
+    <p>THIS WEBSITE IS FOR PROJECT PURPOSES ONLY</p>
+  </footer>
+
+</body>
+</html>
+
+

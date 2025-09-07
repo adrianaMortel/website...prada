@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prada - About Us</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      min-height: 100vh;
+      background: url("D:\Adriana G Mortel\BACKGROUND.jfif") no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    nav {
+      width: 220px;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 10;
+    }
+
+    nav h1 {
+      font-family: 'Didot', serif;
+      font-size: 2.5rem;
+      margin-bottom: 60px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 15px 30px;
+      width: 100%;
+      text-align: center;
+      transition: background 0.3s ease;
+      font-size: 1.1rem;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background: #555;
+    }
+
+    main {
+      margin-left: 220px;
+      padding: 60px 40px 120px;
+      flex: 1;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      max-width: 1500px;
+    }
+
+    main h2 {
+      font-family: 'Didot', serif;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      letter-spacing: 3px;
+    }
+
+    main p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #eee;
+      margin-bottom: 20px;
+    }
+
+    section {
+      margin-bottom: 50px;
+    }
+
+    /* Contact Section */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .contact-info p i {
+      margin-right: 10px;
+      color: #ffcc00;
+    }
+
+    iframe {
+      width: 80%;
+      height: 300px;
+      border: 0;
+      border-radius: 10px;
+    }
+
+    /* Footer */
+    footer.footer {
+      margin-left: 220px;
+      padding: 12px 40px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #ccc;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      left: 220px;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .footer-icons {
+      display: flex;
+      justify-content: center;
+      gap: 12px; 
+      margin-bottom: 3px;
+    }
+
+    .footer-icons a {
+      color: white;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-icons a:hover {
+      color: #aaa;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        position: relative;
+        width: 100%;
+        flex-direction: row;
+        padding: 20px 0;
+      }
+
+      nav h1 {
+        margin-bottom: 0;
+        margin-right: 40px;
+        font-size: 1.8rem;
+      }
+
+      nav a {
+        padding: 10px 15px;
+        font-size: 1rem;
+      }
+
+      main {
+        margin-left: 0;
+        padding: 30px 20px 100px;
+        border-radius: 0;
+        max-width: 100%;
+      }
+
+      footer.footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        margin-left: 0;
+        left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <h1>PRADA</h1>
+    <a href="homepage.html">Home</a>
+    <a href="campaign.html">Campaigns</a>
+    <a href="shop.html">Shop</a>
+    <a href="explore.html">Explore</a>
+    <a href="cart.html">Cart</a>
+    <a href="aboutus.html" class="active">About Us</a>
+  </nav>
+
+  <main>
+    <section>
+      <h2>About Us</h2>
+      <p>Prada has always been more than fashion — it’s an artistic vision, a bold experiment, and a legacy of timeless luxury. Founded in Milan, Prada continues to redefine elegance with innovation and creativity at its core.</p>
+    </section>
+
+    <section>
+      <h2>Our Mission</h2>
+      <p>To craft fashion that inspires confidence, embraces individuality, and champions sustainability — while remaining a symbol of Italian excellence.</p>
+    </section>
+
+    <section>
+      <h2>Our Values</h2>
+      <p>Innovation. Integrity. Sustainability. Timeless Elegance.</p>
+    </section>
+
+    <section>
+      <h2>Contact Us</h2>
+      <div class="contact-info">
+        <p><i class="fas fa-map-marker-alt"></i> Milan, Italy</p>
+        <p><i class="fas fa-phone"></i> +39 02 1234 5678</p>
+        <p><i class="fas fa-envelope"></i> support@prada.com</p>
+        <p><i class="fas fa-clock"></i> Mon - Sat: 10:00 AM - 8:00 PM</p>
+      </div>
+      <!-- Google Map Embed -->
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.298957567534!2d9.191383!3d45.465421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c6aa3f39f7ad%3A0xfbb3c09e16b4c0d5!2sPrada!5e0!3m2!1sen!2sit!4v1693400000000!5m2!1sen!2sit" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-icons">
+      <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p>© 2025 Prada.com | THIS WEBSITE IS FOR PROJECT PURPOSES ONLY</p>
+  </footer>
+
+</body>
+</html>
+

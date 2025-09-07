@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prada - Campaigns</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css" rel="stylesheet" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    html, body {
+      background-color: gray;
+      color: #fff;
+    }
+
+    nav {
+      width: 220px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      font-weight: 600;
+      z-index: 10;
+    }
+
+    nav h1 {
+      font-family: 'Didot', serif;
+      font-size: 2.5rem;
+      margin-bottom: 60px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 15px 30px;
+      width: 100%;
+      text-align: center;
+      transition: background 0.3s ease;
+      font-size: 1.1rem;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background: #555;
+    }
+
+    main {
+      margin-left: 220px;
+      padding: 60px 40px 120px;
+      max-width: 1200px;
+    }
+
+    main h2 {
+      font-family: 'Didot', serif;
+      font-size: 3rem;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .campaigns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .campaign-item {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 8px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .campaign-item:hover {
+      transform: scale(1.05);
+    }
+
+    .campaign-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .caption {
+      padding: 10px;
+      font-size: 0.95rem;
+      font-weight: bold;
+      text-align: center;
+      background: rgba(255,255,255,0.8);
+      color: black;
+    }
+
+    .campaign-content {
+      padding: 15px 20px;
+      color: black;
+    }
+
+    .campaign-content h3 {
+      font-family: 'Didot', serif;
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .campaign-content p {
+      font-size: 1rem;
+      line-height: 1.4;
+      color: black;
+    }
+
+    footer {
+      margin-left: 220px;
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #ccc;
+      background: rgba(0, 0, 0, 0.4);
+      width: calc(100% - 220px);
+    }
+
+    .footer-icons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 5px;
+    }
+
+    .footer-icons a {
+      color: white;
+      font-size: 18px;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        position: relative;
+        width: 100%;
+        flex-direction: row;
+      }
+      main, footer {
+        margin-left: 0;
+        width: 100%;
+      }
+      .campaigns {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Lightbox close button */
+    .lb-close {
+      font-size: 40px !important;
+      color: white !important;
+      top: 15px !important;
+      right: 20px !important;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <h1>PRADA</h1>
+    <a href="homepage.html">Home</a>
+    <a href="campaign.html" class="active">Campaigns</a>
+    <a href="shop.html">Shop</a>
+    <a href="#">Explore</a>
+    <a href="#">Cart</a>
+  </nav>
+
+  <main>
+    <h2>Latest Campaigns</h2>
+    <div class="campaigns">
+
+      <!-- Campaign 1 -->
+      <div class="campaign-item">
+        <a href="ce4e6fd6ce96ba41ad2ec136c43db691.jpg" data-lightbox="spring2025" data-title="Main look – Vibrant runway shot">
+          <img src="ce4e6fd6ce96ba41ad2ec136c43db691.jpg" alt="Spring/Summer 2025" />
+        </a>
+        <div class="caption">Main look – Vibrant runway shot</div>
+
+        <a href="niiii.jpg" data-lightbox="spring2025" data-title="Alternative angle – Floral dress close-up"></a>
+        <a href="summer.avif" data-lightbox="spring2025" data-title="Detail – Accessories in focus"></a>
+
+        <div class="campaign-content">
+          <h3>Spring/Summer 2025</h3>
+          <p>Bold new collection featuring vibrant colors and innovative designs.</p>
+        </div>
+      </div>
+
+      <!-- Campaign 2 -->
+      <div class="campaign-item">
+        <a href="laaaaaa.jpg" data-lightbox="urban" data-title="Main look – City backdrop">
+          <img src="5708976722c56531e0264aefdb8336d0.jpg" alt="Urban Elegance" />
+        </a>
+        <div class="caption">Main look – City backdrop</div>
+
+        <a href="parrr.avif" data-lightbox="urban" data-title="Street style detail"></a>
+        <a href="5708976722c56531e0264aefdb8336d0.jpg" data-lightbox="urban" data-title="Close-up texture"></a>
+
+        <div class="campaign-content">
+          <h3>Urban Elegance</h3>
+          <p>Refined styles crafted for sophisticated city living.</p>
+        </div>
+      </div>
+
+      <!-- Campaign 3 -->
+      <div class="campaign-item">
+        <a href="D:\Adriana G Mortel\Screenshot-2024-03-08-at-8.webp" data-lightbox="heritage" data-title="Classic heritage look">
+          <img src="9ab785241a7d15494647ca1195087976.jpg" alt="Heritage Collection" />
+        </a>
+        <div class="caption">Classic heritage look</div>
+
+        <a href="sunglass.jpg" data-lightbox="heritage" data-title="Sunglasses close-up"></a>
+        <a href="9ab785241a7d15494647ca1195087976.jpg" data-lightbox="heritage" data-title="Detail – Leather work"></a>
+
+        <div class="campaign-content">
+          <h3>Heritage Collection</h3>
+          <p>A tribute to classic Prada craftsmanship with modern luxury.</p>
+        </div>
+      </div>
+
+      <!-- Campaign 4 -->
+      <div class="campaign-item">
+        <a href="D:\Adriana G Mortel\pradagown12.png" data-lightbox="nightfall" data-title="Evening gown main shot">
+          <img src="6ca9c7d60ad7249031feb71f302ee23c.jpg" alt="Nightfall Luxe" />
+        </a>
+        <div class="caption">Evening gown main shot</div>
+
+        <a href="C:\Users\John Paul D\Downloads\ChatGPT Image Aug 24, 2025, 06_21_12 PM.png" data-lightbox="nightfall" data-title="Fabric close-up"></a>
+        <a href="C:\Users\John Paul D\Downloads\ChatGPT Image Aug 24, 2025, 06_25_28 PM.png" data-lightbox="nightfall" data-title="Runway detail"></a>
+
+        <div class="campaign-content">
+          <h3>Nightfall Luxe</h3>
+          <p>Elegant evening wear inspired by timeless design.</p>
+        </div>
+      </div>
+
+      <!-- Campaign 5 -->
+      <div class="campaign-item">
+        <a href="D:\Adriana G Mortel\Gigi-Hadid-Runway-Looks-embed-2.webp" data-lightbox="runway" data-title="Flowing silhouette main look">
+          <img src="op3.jpg" alt="Runway Romance" />
+        </a>
+        <div class="caption">Flowing silhouette main look</div>
+
+        <a href="op3.jpg" data-lightbox="runway" data-title="Alternative angle – Rich textures"></a>
+        <a href="D:\Adriana G Mortel\hero_DT.avif" data-lightbox="runway" data-title="Detail – Fabric layering"></a>
+
+        <div class="campaign-content">
+          <h3>Runway Romance</h3>
+          <p>Fall in love with flowing silhouettes and rich textures.</p>
+        </div>
+      </div>
+
+      <!-- Campaign 6 -->
+      <div class="campaign-item">
+        <a href="op4.jpg" data-lightbox="monochrome" data-title="Minimalist black & white look">
+          <img src="op4.jpg" alt="Monochrome Magic" />
+        </a>
+        <div class="caption">Minimalist black & white look</div>
+
+        <a href="op4.jpg" data-lightbox="monochrome" data-title="Alternative angle"></a>
+        <a href="D:\Adriana G Mortel\39eb415dae9f20f67111c0b9022d3fa5.jpg" data-lightbox="monochrome" data-title="Detail – Sharp contrast lines"></a>
+
+        <div class="campaign-content">
+          <h3>Monochrome Magic</h3>
+          <p>Minimalist fashion reimagined with stark contrasts and clean lines.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-icons">
+      <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p>© 2025 Prada.com</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/js/lightbox-plus-jquery.min.js"></script>
+  <script>
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true,
+      'alwaysShowNavOnTouchDevices': true,
+      'fadeDuration': 300,
+      'imageFadeDuration': 300
+    })
+  </script>
+</body>
+</html>
+
+

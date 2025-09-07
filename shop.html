@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prada - Shop</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<style>
+
+
+
+*{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+	font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body{
+	background:#111;
+	color:#fff;
+	min-height:100vh;
+}
+
+nav{
+	width:220px;
+	background:rgba(0,0,0,0.7);
+	position:fixed;
+	top:0;
+	bottom:0;
+	left:0;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	padding:40px 0;
+
+}
+
+nav h1{
+
+	font-size:2rem;
+	margin-bottom:40px;
+	font-family:'Didot', serif;
+
+}
+nav a{
+	color:#fff;
+	text-decoration:none;
+	padding:10px;width:100%;
+	text-align:center;
+
+}
+
+	nav a:hover,
+	nav a.active{
+
+	background:#555;
+
+}
+
+main{
+
+	margin-left:220px;
+	padding:40px;
+
+}
+
+main h2{
+	text-align:center;
+	font-size:2.5rem;
+	margin-bottom:30px;
+}
+
+.products{
+	display:grid;
+	grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+	gap:20px;
+}
+
+.product-item{
+	background: rgba(255,255,255,0.06);
+	border-radius:12px;
+	overflow:hidden;
+	padding-bottom:15px;
+	cursor:pointer;
+	transition: transform .25s ease, box-shadow .2s ease;
+	border:1px solid rgba(255,255,255,0.03);
+
+}
+
+.product-item:hover{
+	transform:scale(1.03);
+	box-shadow:0 8px 30px rgba(0,0,0,0.6);
+}
+
+.product-image{
+	width:100%;
+	height:200px;
+	object-fit:cover;	
+	display:block;
+	cursor:zoom-in;
+	background:#222;
+}
+
+.product-details{
+	padding:12px;
+}
+
+.product-name{
+	font-size:1.1rem;
+	margin-bottom:6px;
+	font-family:'Didot', serif;
+}
+
+.product-price{
+	color:#ff4c4c;
+	font-weight:bold;
+	margin-bottom:6px;
+	display:block;
+}
+
+.product-caption{
+	color:#bbb;
+	font-size:.85rem;
+}
+
+.modal{
+	display:none;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:rgba(0,0,0,0.88);
+	justify-content:center;
+	align-items:center;
+	z-index:1000;
+}
+
+.modal-content{
+	background:#222;
+	padding:18px;
+	border-radius:12px;
+	max-width:1000px;
+	width:94%;
+	box-shadow:0 12px 40px rgba(0,0,0,0.7);
+}
+
+.modal-header{
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+	margin-bottom:12px;
+}
+
+.modal-header h3{
+	margin:0;
+	font-size:1.15rem;
+}
+
+.close{
+	cursor:pointer;
+	font-size:1.6rem;
+	color:#fff;
+}
+
+.modal-body{
+	display:grid;
+	grid-template-columns:1fr 320px;
+	gap:16px;
+	align-items:start;
+}
+
+.main-image{
+	background:#111;
+	border-radius:10px;
+	padding:10px;
+	text-align:center;
+}
+
+.main-image img{
+	width:100%;
+	max-height:520px;
+	object-fit:contain;
+	border-radius:8px;
+	cursor:zoom-in;
+}
+
+.meta{
+	display:flex;
+	flex-direction:column;
+	gap:8px;
+	color:#fff;
+}
+
+.meta .price{
+	color:#ff4c4c;
+	font-weight:700;
+	font-size:1.05rem;
+}
+
+.meta .desc{
+	color:#bbb;
+	font-size:.95rem;
+	line-height:1.3;
+}
+
+.thumbs{
+	display:grid;
+	grid-template-columns: repeat(1,1fr);
+	gap:10px;
+	margin-top:10px;
+}
+
+.thumbs img{
+	width:100%;
+	height:72px;
+	object-fit:cover;
+	border-radius:6px;
+	cursor:pointer;
+	border:2px solid transparent;
+}
+
+.thumbs img.active{
+	border-color:#ff4c4c;
+}
+
+.carousel-controls{
+	position:relative;
+}
+
+.prev,.next{
+	position:absolute;
+	top:50%;
+	transform:translateY(-50%);
+	background:rgba(0,0,0,0.5);
+	border:none;
+	color:#fff;
+	width:40px;
+	height:40px;
+	border-radius:50%;
+	cursor:pointer;
+	font-size:18px;
+}
+
+.prev{
+	left:8px;
+}
+
+.next{
+	right:8px;
+}
+
+@media(max-width:900px){
+	.modal-body{grid-template-columns:1fr;
+}
+
+.thumbs{
+	grid-template-columns: repeat(5,1fr);
+}
+
+.thumbs img{
+	height:56px;
+
+}}
+
+
+@media(max-width:700px){
+
+nav{
+	display:none;	
+	position:static;
+	width:100%;
+	padding:12px;
+}
+
+main{
+	margin-left:0;
+	padding:20px;
+}
+.product-image{
+	height:160px;
+}
+
+.modal-content{
+	width:96%;
+}}
+
+#image-modal{
+	display:none;
+	position:fixed;
+	top:0;left:0;
+	width:100%;
+	height:100%;
+	background:rgba(0,0,0,0.95);
+	justify-content:center;
+	align-items:center;
+	z-index:2000;
+}
+
+#image-modal img{
+	width:100%;
+	height:auto;
+	max-width:88%;
+	max-height:88%;
+	border-radius:12px;
+}
+
+#image-modal .close{
+	position:absolute;
+	top:26px;right:36px;
+	font-size:2rem;
+	cursor:pointer;
+	color:#fff;
+}
+
+.buy-btn{
+	background:#e60023;
+	border:none;
+	color:#fff;
+	padding:6px 12px;
+	margin-top:8px;
+	border-radius:6px;
+	cursor:pointer;
+}
+
+
+
+</style>
+</head>
+<body>
+
+<nav>
+<h1>PRADA</h1>
+<a href="homepage.html">Home</a>
+<a href="campaign.html">Campaigns</a>
+<a href="shop.html" class="active">Shop</a>
+<a href="explore.html">Explore</a>
+<a href="cart.html">Cart</a>
+<a href="about us.html">About Us</a>
+</nav>
+
+<main>
+<h2>Shop Prada</h2>
+<div class="products" id="product-list"></div>
+</main>
+
+<!-- Modal -->
+<div class="modal" id="product-modal" aria-hidden="true">
+<div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+<div class="modal-header">
+<h3 id="modal-title">Product Variants</h3>
+<span class="close" id="modal-close" aria-label="Close">&times;</span>
+</div>
+<div class="modal-body">
+<div class="main-image">
+<div class="carousel-controls" style="position:relative;">
+<button class="prev" id="prev-variant" title="Previous">&#10094;</button>
+<img id="modal-main-img" src="" alt="Variant" />
+<button class="next" id="next-variant" title="Next">&#10095;</button>
+</div>
+<div style="margin-top:10px; text-align:center;">
+<div id="modal-variant-name" style="font-weight:600;"></div>
+<div id="modal-variant-price" style="color:#ff4c4c; font-weight:700; margin-top:6px;"></div>
+<button id="add-to-cart" class="buy-btn">Add to Cart</button>
+</div>
+</div>
+<div class="meta">
+<div id="modal-product-caption" class="desc"></div>
+<div style="margin-top:12px;">
+<div style="font-size:.95rem;color:#bbb;margin-bottom:6px;">Other variants</div>
+<div class="thumbs" id="modal-thumbs"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Image Preview -->
+<div id="image-modal" aria-hidden="true">
+<span class="close" id="image-close" aria-label="Close">&times;</span>
+<img id="image-preview" src="" alt="Preview" />
+</div>
+
+<script>
+// Fallback image
+const FALLBACK_IMAGE="https://via.placeholder.com/900x600?text=Image+not+available";
+
+// 15 products with 4 variants each
+const products=[
+{ id:1, name:"Evening Dress", price:"₱10,000", image:"product-1.jpg.PNG", caption:"Night Long Gown – A flowing, elegant gown designed for evening wear, combining comfort and sophistication for special occasions", variants:[
+{name:"Red Dress", price:"₱10,000", image:"prada3.WEBP"},
+{name:"Brown Dress ", price:"₱10,500", image:"Kinsley_Gown_sienna_1_14__24552.1717592672.1280.1280.WEBP"},
+{name:"Sky Blue Dress", price:"₱11,000", image:"faviana-11050-satin-prom-gown-with-slit-prom-dresses-00-mint-33017678561363_grande.WEBP"},
+{name:"Green Dress", price:"₱11,500", image:"sheath-prom-dress-long-split-shoulder-neck-blue-satin-crystals-gowns-dresses-evening-762_720x.WEBP"}
+]},
+{ id:2, name:"Men's Tuxedo", price:"₱12,000", image:"444.AVIF", caption:"Men’s Tuxedo – A classic formal suit with sharp tailoring and refined details, perfect for black-tie events and special occasions", variants:[
+{name:"Pink Tuxedo", price:"₱12,000", image:"pink,tuxedo.WEBP"},
+{name:"Light Pink Tuxedo", price:"₱12,500", image:"111.WEBP"},
+{name:"Gold & White Floral Tuxedo", price:"₱13,000", image:"555.WEBP"},
+{name:"White Tuxedo with Red Design", price:"₱13,500", image:"images.JFIF"}
+]},
+{ id:3, name:"Scarfs", price:"₱14,000", image:"scarf4.WEBP", caption:"Scarfs – Wrap yourself in style and comfort with our timeless scarves.", variants:[
+{name:"Black & Gray Scarf", price:"₱14,000", image:"scarf1.JFIF"},
+{name:"Beige Scarf", price:"₱14,500", image:"scarf3.WEBP"},
+{name:"Brown & Gray Scarf", price:"₱15,000", image:"scarf2.WEBP"},
+{name:"Light Gray Scarf", price:"₱15,500", image:"scarf5.WEBP"}
+]},
+{ id:4, name:"women's Highheels", price:"₱16,000", image:"RED.WEBP", caption:"“Step into elegance and confidence with every pair of heels.”", variants:[
+{name:"Black Heels", price:"₱16,000", image:"women3.WEBP"},
+{name:"White Heels", price:"₱16,500", image:"prada-Pearl-Gray-High-Heeled-Satin-Sandals.WEBP"},
+{name:"Light Green High Heels", price:"₱17,000", image:"satin platform pumps in green.AVIF"},
+{name:"Pink High Heels", price:"₱17,500", image:"PINK.AVIF"}
+]},
+{ id:5, name:"Men's Footwear ", price:"₱18,000", image:"YELLOW.WEBP", caption:"Sleek and durable sneakers crafted with lightweight rubber soles, combining luxury style with everyday comfort", variants:[
+{name:"Variant 5A", price:"₱18,000", image:"mens1.WEBP"},
+{name:"Variant 5B", price:"₱18,500", image:"mens3.JFIF"},
+{name:"Modern sneakers with lightweight rubber soles for all-day comfort and style.", price:"₱19,000", image:"mens4.JFIF"},
+{name:"A mix of technical fabrics and rubber sole, built for both city and casual wear.", price:"₱19,500", image:"777.WEBP"}
+]},
+{ id:6, name:"Lipsticks", price:"₱20,000", image:"LIPS.WEBP", caption:"Bold colors, smooth finish, and luxury in every swipe.”", variants:[
+{name:"Pink shades", price:"₱20,000", image:"1A2001_2IAE_FB055_P_OOO_SLF pink.AVIF"},
+{name:"Elegant neutral shades for everyday sophistication.", price:"₱20,500", image:"3614273853026-B03-MAHOGANY-main-v2.WEBP"},
+{name:"Prada Red Lipstick", price:"₱21,000", image:"images red.JFIF"},
+{name:"Prada Amaranto Lipstick", price:"₱21,500", image:"3557b971e25a8d22ad310a2809f81daf amarento.WEBP"}
+]},
+{ id:7, name:"Women's Bags", price:"₱22,000", image:"REDBAGS.AVIF", caption:"Stylish and functional bags designed to elevate every outfit.", variants:[
+{name:"Classic white Prada bags", price:"₱22,000", image:"bag3.JFIF"},
+{name:"Elegant black Prada bag", price:"₱22,500", image:"bag4.AVIF"},
+{name:"Your everyday essential in iconic black", price:"₱23,000", image:"bag1.WEBP"},
+{name:"Chic blue Prada bag", price:"₱23,500", image:"bag2.WEBP"}
+]},
+{ id:8, name:"Mens Bags", price:"₱24,000", image:"images (1).JFIF", caption:"Description 8", variants:[
+{name:"Variant 8A", price:"₱24,000", image:"2VC007_2DMH_F0002_V_XOO_SLR.AVIF"},
+{name:"Variant 8B", price:"₱24,500", image:"25086736~black_0.WEBP"},
+{name:"Variant 8C", price:"₱25,000", image:"bg_4625331_100134_m.WEBP"},
+{name:"Variant 8D", price:"₱25,500", image:"25086736~black_0.WEBP"}
+]},
+{ id:9, name:"Men's Perfumes", price:"₱26,000", image:"PRADA2PER.JFIF", caption:"Description 9", variants:[
+{name:"Variant 9A", price:"₱26,000", image:"images (1)2.JFIF"},
+{name:"Variant 9B", price:"₱26,500", image:"men's perfume.WEBP"},
+{name:"Variant 9C", price:"₱27,000", image:"PRADA1PER.WEBP"},
+{name:"Variant 9D", price:"₱27,500", image:"mens-fragrances-luna-rossa-sport-3-4-oz-edt-for-men-1_720x.WEBP"}
+]},
+{ id:10, name:"Women's Perfumes", price:"₱28,000", image:"33954-4.WEBP", caption:"Description 10", variants:[
+{name:"Variant 10A", price:"₱28,000", image:"prada-candy-edp-for-women-80ml-perfume-philippines-best-price.WEBP"},
+{name:"Variant 10B", price:"₱28,500", image:"prada-candy-gloss-eau-de-toilette-skin-society-shop-address-country-2_1024x.WEBP"},
+{name:"Variant 10C", price:"₱29,000", image:"PRADA CANDY NIGHT.WEBP"},
+{name:"Variant 10D", price:"₱29,500", image:"614n7pgyPXL._AC_SL1200.WEBP"}
+]},
+{ id:11, name:"", price:"₱30,000", image:"https://picsum.photos/id/141/900/600", caption:"Description 11", variants:[
+{name:"Variant 11A", price:"₱30,000", image:"https://picsum.photos/id/141/600/400"},
+{name:"Variant 11B", price:"₱30,500", image:"https://picsum.photos/id/142/600/400"},
+{name:"Variant 11C", price:"₱31,000", image:"https://picsum.photos/id/143/600/400"},
+{name:"Variant 11D", price:"₱31,500", image:"https://picsum.photos/id/144/600/400"}
+]},
+{ id:12, name:"Product 12", price:"₱32,000", image:"https://picsum.photos/id/145/900/600", caption:"Description 12", variants:[
+{name:"Variant 12A", price:"₱32,000", image:"https://picsum.photos/id/145/600/400"},
+{name:"Variant 12B", price:"₱32,500", image:"https://picsum.photos/id/146/600/400"},
+{name:"Variant 12C", price:"₱33,000", image:"https://picsum.photos/id/147/600/400"},
+{name:"Variant 12D", price:"₱33,500", image:"https://picsum.photos/id/148/600/400"}
+]},
+];
+
+// Render Products
+const productList=document.getElementById("product-list");
+products.forEach(p=>{
+const div=document.createElement("div");
+div.classList.add("product-item");
+div.innerHTML=`<img src="${p.image}" alt="${p.name}" class="product-image" onerror="this.src='${FALLBACK_IMAGE}'">
+<div class="product-details">
+<span class="product-name">${p.name}</span>
+<span class="product-price">${p.price}</span>
+<span class="product-caption">${p.caption}</span>
+</div>`;
+div.addEventListener("click",()=>openModal(p));
+productList.appendChild(div);
+});
+
+// Modal Logic
+const modal=document.getElementById("product-modal");
+const modalClose=document.getElementById("modal-close");
+const modalMainImg=document.getElementById("modal-main-img");
+const modalThumbs=document.getElementById("modal-thumbs");
+const modalVariantName=document.getElementById("modal-variant-name");
+const modalVariantPrice=document.getElementById("modal-variant-price");
+const modalProductCaption=document.getElementById("modal-product-caption");
+const prevBtn=document.getElementById("prev-variant");
+const nextBtn=document.getElementById("next-variant");
+const addCartBtn=document.getElementById("add-to-cart");
+let currentProduct=null,currentVariantIndex=0;
+
+function openModal(product){
+currentProduct=product;
+currentVariantIndex=0;
+updateModal();
+modal.style.display="flex";
+}
+
+function updateModal(){
+if(!currentProduct) return;
+const variant=currentProduct.variants[currentVariantIndex];
+modalMainImg.src=variant.image||FALLBACK_IMAGE;
+modalVariantName.textContent=variant.name;
+modalVariantPrice.textContent=variant.price;
+modalProductCaption.textContent=currentProduct.caption;
+modalThumbs.innerHTML="";
+currentProduct.variants.forEach((v,i)=>{
+const img=document.createElement("img");
+img.src=v.image||FALLBACK_IMAGE;
+if(i===currentVariantIndex) img.classList.add("active");
+img.addEventListener("click",()=>{currentVariantIndex=i;updateModal();});
+modalThumbs.appendChild(img);
+});
+}
+
+prevBtn.onclick=()=>{
+currentVariantIndex=(currentVariantIndex-1+currentProduct.variants.length)%currentProduct.variants.length;
+updateModal();
+};
+nextBtn.onclick=()=>{
+currentVariantIndex=(currentVariantIndex+1)%currentProduct.variants.length;
+updateModal();
+};
+modalClose.onclick=()=>{modal.style.display="none";}
+window.onclick=(e)=>{if(e.target===modal) modal.style.display="none";}
+
+// Image zoom
+const imageModal=document.getElementById("image-modal");
+const imagePreview=document.getElementById("image-preview");
+const imageClose=document.getElementById("image-close");
+modalMainImg.addEventListener("click",()=>{
+imagePreview.src=modalMainImg.src;
+imageModal.style.display="flex";
+});
+imageClose.onclick=()=>{imageModal.style.display="none";}
+window.onclick=(e)=>{if(e.target===imageModal) imageModal.style.display="none";}
+
+// Add to cart
+addCartBtn.onclick=()=>{
+let cart=JSON.parse(localStorage.getItem("pradaCart")||"[]");
+cart.push({product:currentProduct.name,variant:currentProduct.variants[currentVariantIndex].name,price:currentProduct.variants[currentVariantIndex].price});
+localStorage.setItem("pradaCart",JSON.stringify(cart));
+alert("Added to cart!");
+modal.style.display="none";
+}
+</script>
+
+</body>
+</html>
+
+
